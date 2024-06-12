@@ -5,6 +5,7 @@ import { provideStoreDevtools } from '@ngrx/store-devtools';
 
 import { routes } from './app.routes';
 import { authReducer } from './store/reducers';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -19,6 +20,6 @@ export const appConfig: ApplicationConfig = {
       traceLimit: 75,
       connectInZone: true,
     }),
-    provideState({ name: 'auth', reducer: authReducer }),
+    provideState({ name: 'auth', reducer: authReducer }), provideAnimationsAsync(),
   ],
 };
