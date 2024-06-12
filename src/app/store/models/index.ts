@@ -1,4 +1,1 @@
-export interface NameState {
-  firstName: string;
-  lastName: string;
-}
+export * from './auth';
