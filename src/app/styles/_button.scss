@@ -1,0 +1,11 @@
+.primary-button {
+  @include mat.button-color($light-theme, $color-variant: primary);
+}
+
+.secondary-button {
+  @include mat.button-color($light-theme, $color-variant: secondary);
+}
+
+.tertiary-button {
+  @include mat.button-color($light-theme, $color-variant: tertiary);
+}

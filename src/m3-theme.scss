@@ -4,22 +4,21 @@
 @use "sass:map";
 @use "@angular/material" as mat;
 
-// Note: Color palettes are generated from primary: #350060, secondary: #ff854d
-
+// Note: Color palettes are generated from primary: #350060
 $_palettes: (
   primary: (
-    0: #160033,
-    10: #220044,
-    20: #28004e,
-    25: #2c0051,
-    30: #300058,
-    35: #350060,
+    0: #000000,
+    10: #2c0051,
+    20: #44176f,
+    25: #50247b,
+    30: #5c3187,
+    35: #693d94,
     40: #350060,
-    50: #532678,
-    60: #724d90,
-    70: #9a80b0,
-    80: #c2b3cf,
-    90: #e7e0ec,
+    50: #8f63bc,
+    60: #aa7dd8,
+    70: #c697f5,
+    80: #ddb8ff,
+    90: #f0dbff,
     95: #f9ecff,
     98: #fff7fe,
     99: #fffbff,
@@ -27,18 +26,20 @@ $_palettes: (
   ),
   secondary: (
     0: #000000,
-    10: #360f00,
-    20: #581d00,
-    25: #6a2500,
-    30: #7d2d00,
-    40: #ff723d,
-    50: #ff7d46,
-    60: #ff854d,
-    70: #ff9768,
-    80: #ffaa82,
-    90: #ffc2a6,
-    95: #ffdaca,
-    99: #fff0ea,
+    10: #211829,
+    20: #362c3f,
+    25: #42374b,
+    30: #4d4356,
+    35: #594e63,
+    40: #ff854d,
+    50: #7f7288,
+    60: #998ca3,
+    70: #b4a6be,
+    80: #d0c1da,
+    90: #edddf6,
+    95: #f9ecff,
+    98: #fff7fe,
+    99: #fffbff,
     100: #ffffff,
   ),
   tertiary: (
@@ -146,3 +147,5 @@ $light-theme: mat.define-theme(
     ),
   )
 );
+
+@import "./app/styles/_button.scss";
