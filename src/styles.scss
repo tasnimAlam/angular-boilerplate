@@ -1,5 +1,5 @@
 @use "@angular/material" as mat;
-@use "./m3-theme.scss" as photonTheme;
+@use "./app/styles/m3-theme.scss" as photonTheme;
 @include mat.core();
 
 :root {
