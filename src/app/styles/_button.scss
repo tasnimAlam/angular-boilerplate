@@ -1,3 +1,14 @@
+// Custom border radius
+.mat-mdc-button,
+.mat-mdc-raised-button,
+.mat-mdc-outlined-button,
+.mat-mdc-unelevated-button {
+  --mdc-filled-button-container-shape: 6px;
+  --mdc-outlined-button-container-shape: 6px;
+  --mdc-protected-button-container-shape: 6px;
+  --mdc-text-button-container-shape: 6px;
+}
+
 .primary-button {
   @include mat.button-color($light-theme, $color-variant: primary);
 }
