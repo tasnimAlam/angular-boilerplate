@@ -1,1 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
+
+// Import custom theme
+@use 'app/shared/styles/theme';
+
+// Global styles
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+// Material icon font
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
