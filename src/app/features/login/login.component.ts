@@ -1,7 +1,7 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, computed } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from '../../core/services/auth.service';
+import { AuthStore } from '../../core/store/auth/auth.store';
 import { MATERIAL_IMPORTS } from '../../shared/material/material.imports';
 
 @Component({
@@ -12,12 +12,12 @@ import { MATERIAL_IMPORTS } from '../../shared/material/material.imports';
 })
 export class LoginComponent {
   private readonly fb = inject(FormBuilder);
-  private readonly authService = inject(AuthService);
+  private readonly authStore = inject(AuthStore);
   private readonly router = inject(Router);
   
   protected readonly loginForm: FormGroup;
-  protected readonly errorMessage = signal('');
-  protected readonly isLoading = signal(false);
+  protected readonly isLoading = computed(() => this.authStore.isLoading());
+  protected readonly errorMessage = computed(() => this.authStore.error() || '');
   
   constructor() {
     this.loginForm = this.fb.group({
@@ -26,25 +26,17 @@ export class LoginComponent {
     });
   }
   
-  protected onSubmit(): void {
+  protected async onSubmit(): Promise<void> {
     if (this.loginForm.valid) {
-      this.isLoading.set(true);
-      this.errorMessage.set('');
+      this.authStore.clearAuthError();
       
       const { username, password } = this.loginForm.value;
       
-      // Simulate async login
-      setTimeout(() => {
-        const success = this.authService.login(username, password);
-        
-        if (success) {
-          this.router.navigate(['/dashboard']);
-        } else {
-          this.errorMessage.set('Invalid username or password');
-        }
-        
-        this.isLoading.set(false);
-      }, 500);
+      const success = await this.authStore.login({ username, password });
+      
+      if (success) {
+        this.router.navigate(['/dashboard']);
+      }
     }
   }
 }

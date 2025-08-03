@@ -1,12 +1,15 @@
 import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
-import { AuthService } from '../services/auth.service';
+import { AuthStore } from '../store/auth/auth.store';
 
-export const authGuard: CanActivateFn = () => {
-  const authService = inject(AuthService);
+export const authGuard: CanActivateFn = async () => {
+  const authStore = inject(AuthStore);
   const router = inject(Router);
   
-  if (authService.isAuthenticated()) {
+  // Check if session is valid (also handles token refresh if needed)
+  const isValidSession = await authStore.refreshSession();
+  
+  if (isValidSession) {
     return true;
   }
   

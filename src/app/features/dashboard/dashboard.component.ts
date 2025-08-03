@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { AuthService } from '../../core/services/auth.service';
+import { AuthStore } from '../../core/store/auth/auth.store';
 import { MATERIAL_IMPORTS } from '../../shared/material/material.imports';
 
 @Component({
@@ -9,9 +9,11 @@ import { MATERIAL_IMPORTS } from '../../shared/material/material.imports';
   styleUrl: './dashboard.component.scss'
 })
 export class DashboardComponent {
-  private readonly authService = inject(AuthService);
+  private readonly authStore = inject(AuthStore);
+  
+  protected readonly userName = this.authStore.userName;
   
   protected onLogout(): void {
-    this.authService.logout();
+    this.authStore.logout();
   }
 }

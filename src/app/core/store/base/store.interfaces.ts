@@ -30,6 +30,8 @@ export interface Activity {
 export interface AuthState {
   isAuthenticated: boolean;
   currentUser: User | null;
+  accessToken: string | null;
+  refreshToken: string | null;
   isLoading: boolean;
   error: string | null;
 }
